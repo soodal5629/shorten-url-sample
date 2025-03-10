@@ -1,0 +1,20 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 100 # 100초 동안
+      arrivalRate: 10 # 1초 당 10번씩 요청
+      rampTo: 100 # 요청을 점점 늘려서 초당 100번까지 늘림
+  payload:
+    path: "urls.csv"
+    fields:
+      - "url"
+
+scenarios:
+  - name: "create shortenUrl"
+    flow:
+      - post:
+          url: "/shortenUrl"
+          json:
+            originalUrl: "{{ url }}"
+
+          #followRedirect: false
