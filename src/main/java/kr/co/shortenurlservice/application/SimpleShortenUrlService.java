@@ -42,7 +42,8 @@ public class SimpleShortenUrlService {
             throw new NotFoundShortenUrlException();
 
         shortenUrl.increaseRedirectCount();
-        shortenUrlRepository.saveShortenUrl(shortenUrl);
+        //shortenUrlRepository.saveShortenUrl(shortenUrl);
+        shortenUrlRepository.increaseRedirectCount(shortenUrl);
 
         String originalUrl = shortenUrl.getOriginalUrl();
 
